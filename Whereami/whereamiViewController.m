@@ -7,6 +7,7 @@
 //
 
 #import "whereamiViewController.h"
+#import "BNRMapPoint.h"
 
 @interface whereamiViewController ()
 
@@ -40,9 +41,19 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
     
+     NSLog(@"%d locations found",locations.count);
+    
+    
+    CLLocation *newLocation = nil;
     for(CLLocation* location in locations){
         NSLog(@"%@",location);
+        newLocation = location;
     }
+    
+    NSTimeInterval t = [[newLocation timestamp] timeIntervalSinceNow];
+    if( t < -180) return;
+    
+    [self foundLocation:newLocation];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
@@ -53,6 +64,36 @@
     CLLocationCoordinate2D loc = [userLocation coordinate];
     MKCoordinateRegion region =  MKCoordinateRegionMakeWithDistance(loc,250,250);
     [woldView setRegion:region animated:YES];
+}
+
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [self findLocation];
+    [textField resignFirstResponder];
+    return YES;
+}
+
+-(void) findLocation{
+    [locationManager startUpdatingLocation];
+    [activityIndicator startAnimating];
+    [locationTitleField setHidden:YES];
+    
+}
+
+-(void) foundLocation: (CLLocation *) loc{
+    CLLocationCoordinate2D coord = [loc coordinate];
+    
+    BNRMapPoint *mp = [[BNRMapPoint alloc]initWithCoordinate:coord title:[locationTitleField text]];
+    
+    [woldView addAnnotation:mp];
+    
+    MKCoordinateRegion region =  MKCoordinateRegionMakeWithDistance(coord,250,250);
+    [woldView setRegion:region animated:YES];
+    
+    [locationTitleField setText:@""];
+    [activityIndicator stopAnimating];
+    [locationTitleField setHidden:NO];
+    [locationManager stopUpdatingLocation];
 }
 
 -(void) dealloc{
