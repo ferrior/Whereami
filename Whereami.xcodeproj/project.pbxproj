@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4A3921BE19935BF400E387CB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A3921BD19935BF400E387CB /* CoreLocation.framework */; };
 		4A3921C019936C9200E387CB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A3921BF19936C9200E387CB /* MapKit.framework */; };
+		4A3921C31993756B00E387CB /* BNRMapPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3921C21993756B00E387CB /* BNRMapPoint.m */; };
 		4A44EF1319935AA90023B4D1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A44EF1219935AA90023B4D1 /* Foundation.framework */; };
 		4A44EF1519935AA90023B4D1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A44EF1419935AA90023B4D1 /* CoreGraphics.framework */; };
 		4A44EF1719935AA90023B4D1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A44EF1619935AA90023B4D1 /* UIKit.framework */; };
@@ -38,6 +39,8 @@
 /* Begin PBXFileReference section */
 		4A3921BD19935BF400E387CB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		4A3921BF19936C9200E387CB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		4A3921C11993756B00E387CB /* BNRMapPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRMapPoint.h; sourceTree = "<group>"; };
+		4A3921C21993756B00E387CB /* BNRMapPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRMapPoint.m; sourceTree = "<group>"; };
 		4A44EF0F19935AA90023B4D1 /* Whereami.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Whereami.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A44EF1219935AA90023B4D1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4A44EF1419935AA90023B4D1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -127,6 +130,8 @@
 				4A44EF2819935AAA0023B4D1 /* whereamiViewController.m */,
 				4A44EF2A19935AAA0023B4D1 /* Images.xcassets */,
 				4A44EF1919935AA90023B4D1 /* Supporting Files */,
+				4A3921C11993756B00E387CB /* BNRMapPoint.h */,
+				4A3921C21993756B00E387CB /* BNRMapPoint.m */,
 			);
 			path = Whereami;
 			sourceTree = "<group>";
@@ -208,6 +213,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Bin Liu";
 				TargetAttributes = {
+					4A44EF0E19935AA90023B4D1 = {
+						DevelopmentTeam = LB9YAPGH9X;
+					};
 					4A44EF2F19935AAA0023B4D1 = {
 						TestTargetID = 4A44EF0E19935AA90023B4D1;
 					};
@@ -260,6 +268,7 @@
 			files = (
 				4A44EF2319935AAA0023B4D1 /* whereamiAppDelegate.m in Sources */,
 				4A44EF2919935AAA0023B4D1 /* whereamiViewController.m in Sources */,
+				4A3921C31993756B00E387CB /* BNRMapPoint.m in Sources */,
 				4A44EF1F19935AAA0023B4D1 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -385,10 +394,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Whereami/Whereami-Prefix.pch";
 				INFOPLIST_FILE = "Whereami/Whereami-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -398,10 +410,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Whereami/Whereami-Prefix.pch";
 				INFOPLIST_FILE = "Whereami/Whereami-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

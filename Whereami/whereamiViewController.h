@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import <MapKit/MapKit.h>
 
-@interface whereamiViewController : UIViewController <CLLocationManagerDelegate>{
+@interface whereamiViewController : UIViewController <CLLocationManagerDelegate, MKMapViewDelegate>{
     CLLocationManager* locationManager;
-    
+    IBOutlet MKMapView *woldView;
+    IBOutlet UIActivityIndicatorView *activityIndicator;
+    IBOutlet UITextField *locationTitleField;
 }
 
 @end

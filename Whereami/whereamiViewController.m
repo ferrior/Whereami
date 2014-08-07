@@ -24,7 +24,9 @@
     
     [locationManager setDelegate:self];
     [locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
-    [locationManager startUpdatingLocation];
+    //[locationManager startUpdatingLocation];
+    
+    [woldView setShowsUserLocation:YES];
     
 }
 
@@ -45,6 +47,12 @@
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
     NSLog(@"cannot find location: %@", error);
+}
+
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation{
+    CLLocationCoordinate2D loc = [userLocation coordinate];
+    MKCoordinateRegion region =  MKCoordinateRegionMakeWithDistance(loc,250,250);
+    [woldView setRegion:region animated:YES];
 }
 
 -(void) dealloc{
